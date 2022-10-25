@@ -1,4 +1,4 @@
-package com.ppFormApp.FormApp;
+package com.ppFormApp.formapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

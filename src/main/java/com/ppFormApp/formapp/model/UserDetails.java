@@ -1,4 +1,4 @@
-package com.ppFormApp.FormApp.Model;
+package com.ppFormApp.formapp.model;
 
 import lombok.Data;
 

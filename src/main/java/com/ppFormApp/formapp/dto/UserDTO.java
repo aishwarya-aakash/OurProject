@@ -1,6 +1,6 @@
-package com.ppFormApp.FormApp.DTO;
+package com.ppFormApp.formapp.dto;
 
-import com.ppFormApp.FormApp.Model.FileDetails;
+import com.ppFormApp.formapp.model.FileDetails;
 import lombok.Data;
 
 import java.util.Date;

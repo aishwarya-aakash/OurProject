@@ -1,14 +1,14 @@
-package com.ppFormApp.FormApp.DAO;
+package com.ppFormApp.formapp.dao;
 
-import com.ppFormApp.FormApp.DTO.CommonResponseDTO;
-import com.ppFormApp.FormApp.DTO.UserDTO;
-import com.ppFormApp.FormApp.Model.FileDetails;
-import com.ppFormApp.FormApp.Model.UserDetails;
-import com.ppFormApp.FormApp.Repository.FileDetailsRepository;
-import com.ppFormApp.FormApp.Repository.UserDetailsRepository;
+import com.ppFormApp.formapp.constants.CommonConstants;
+import com.ppFormApp.formapp.dto.CommonResponseDTO;
+import com.ppFormApp.formapp.dto.UserDTO;
+import com.ppFormApp.formapp.model.FileDetails;
+import com.ppFormApp.formapp.model.UserDetails;
+import com.ppFormApp.formapp.repository.FileDetailsRepository;
+import com.ppFormApp.formapp.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -23,7 +23,10 @@ public class PpFormDaoImpl implements PpFormDao {
 
     @Autowired
     FileDetailsRepository fileDetailsRepository;
-    
+
+    @Autowired
+    CommonConstants CommonConstants;
+
     @Override
     public CommonResponseDTO addUser(UserDTO userDeets) {
         CommonResponseDTO resp=new CommonResponseDTO();
@@ -50,22 +53,22 @@ public class PpFormDaoImpl implements PpFormDao {
             for(FileDetails filedet:userDeets.getFileList()){
                 fileDetailsRepository.save(filedet);
             }
-            resp.setStatus("success");
+            resp.setStatus(CommonConstants.SUCCESS);
             Map<String,Object> pay=new HashMap<>();
-            pay.put("message",newUser.getName()+" details saved successfully!!");
+            pay.put(CommonConstants.MESSAGE,newUser.getName()+" details saved successfully!!");
             resp.setPayload(pay);
 
         }catch(DataIntegrityViolationException v){
             resp.setStatus("Wrong Creds");
             Map<String,Object> pay=new HashMap<>();
-            pay.put("message","Application with Passport Number "+newUser.getPassportNumber()+" already exists in our records !!");
+            pay.put(CommonConstants.MESSAGE,"Application with Passport Number "+newUser.getPassportNumber()+" already exists in our records !!");
             resp.setPayload(pay);
         }
         catch (Exception e){
             e.printStackTrace();
             resp.setStatus("Error");
             Map<String,Object> pay=new HashMap<>();
-            pay.put("message","Internal server error!!");
+            pay.put(CommonConstants.MESSAGE,"Internal server error!!");
             resp.setPayload(pay);
         }
         return resp;
@@ -75,14 +78,10 @@ public class PpFormDaoImpl implements PpFormDao {
     public List<UserDetails> getUsers() {
         List<UserDetails> userlist= userDetailsRepository.findAll();
 
-        for(UserDetails u:userlist ){
-            System.out.println(u.toString());
-        }
-
         Map<String,Object> payload=new HashMap<>();
         payload.put("userList",userlist);
          CommonResponseDTO resp=new CommonResponseDTO();
-         resp.setStatus("success");
+         resp.setStatus(CommonConstants.SUCCESS);
          resp.setPayload(payload);
         return userlist;
     }

@@ -1,6 +1,6 @@
-package com.ppFormApp.FormApp.Repository;
+package com.ppFormApp.formapp.repository;
 
-import com.ppFormApp.FormApp.Model.UserDetails;
+import com.ppFormApp.formapp.model.UserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

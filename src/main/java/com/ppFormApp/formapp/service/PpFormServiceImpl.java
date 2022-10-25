@@ -1,9 +1,9 @@
-package com.ppFormApp.FormApp.Service;
+package com.ppFormApp.formapp.service;
 
-import com.ppFormApp.FormApp.DAO.PpFormDao;
-import com.ppFormApp.FormApp.DTO.CommonResponseDTO;
-import com.ppFormApp.FormApp.DTO.UserDTO;
-import com.ppFormApp.FormApp.Model.UserDetails;
+import com.ppFormApp.formapp.dao.PpFormDao;
+import com.ppFormApp.formapp.dto.CommonResponseDTO;
+import com.ppFormApp.formapp.dto.UserDTO;
+import com.ppFormApp.formapp.model.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,11 +1,11 @@
-package com.ppFormApp.FormApp.Controller;
+package com.ppFormApp.formapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ppFormApp.FormApp.DTO.CommonResponseDTO;
-import com.ppFormApp.FormApp.DTO.UserDTO;
-import com.ppFormApp.FormApp.Model.FileDetails;
-import com.ppFormApp.FormApp.Model.UserDetails;
-import com.ppFormApp.FormApp.Service.PpFormService;
+import com.ppFormApp.formapp.dto.CommonResponseDTO;
+import com.ppFormApp.formapp.dto.UserDTO;
+import com.ppFormApp.formapp.model.FileDetails;
+import com.ppFormApp.formapp.model.UserDetails;
+import com.ppFormApp.formapp.service.PpFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,8 +24,7 @@ public class PpFormController {
     public CommonResponseDTO addUser(@RequestPart("files") MultipartFile[] files, @RequestPart("userdets") String userdet){
         try{
             ObjectMapper mapper=new ObjectMapper();
-            UserDTO userdets=new UserDTO();
-            userdets=mapper.readValue(userdet,UserDTO.class);
+            UserDTO userdets=mapper.readValue(userdet,UserDTO.class);
             List<FileDetails> fileList= new ArrayList<>();
             for(MultipartFile file:files) {
                 FileDetails filedto = new FileDetails();

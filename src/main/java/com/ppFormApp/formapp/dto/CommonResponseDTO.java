@@ -1,4 +1,4 @@
-package com.ppFormApp.FormApp.DTO;
+package com.ppFormApp.formapp.dto;
 
 import lombok.Data;
 
